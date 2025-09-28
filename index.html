@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Core Web Timeline</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="logo-dot"></span>
+      <h1>The Core Web Timeline</h1>
+    </div>
+    <a class="made-with" href="#" aria-label="Made with the help of ChatGPT">Made with ChatGPT</a>
+  </header>
+
+  <section class="controls">
+    <div class="control">
+      <label for="search">Search</label>
+      <input id="search" type="search" placeholder="Search title, summary, links…" />
+    </div>
+    <div class="control">
+      <label for="category">Category</label>
+      <select id="category">
+        <option value="">All</option>
+      </select>
+    </div>
+    <div class="control">
+      <label for="century">Century</label>
+      <select id="century">
+        <option value="">All</option>
+        <option value="1600">1600s</option>
+        <option value="1700">1700s</option>
+        <option value="1800">1800s</option>
+        <option value="1900">1900s</option>
+        <option value="2000">2000s</option>
+      </select>
+    </div>
+  </section>
+
+  <main id="timeline" class="timeline" aria-live="polite"></main>
+
+  <template id="pin-template">
+    <article class="pin">
+      <h3 class="pin-title"></h3>
+      <div class="pin-meta">
+        <span class="pin-date"></span>
+        <span class="pin-category"></span>
+      </div>
+      <p class="pin-summary"></p>
+      <details class="pin-details">
+        <summary>More</summary>
+        <div class="pin-extra">
+          <div class="pin-field"><strong>Links (cause/effect):</strong> <span class="pin-links"></span></div>
+          <div class="pin-field"><strong>Conspiracies / Whispers:</strong> <span class="pin-conspiracy"></span></div>
+          <div class="pin-field"><strong>Anecdotes / Funnies:</strong> <span class="pin-anecdote"></span></div>
+        </div>
+      </details>
+    </article>
+  </template>
+
+  <footer class="footer">
+    <p>System: The Core · Owner: Justin · Manager: ChatGPT · Rule: Nothing is deleted; all updates are additive and versioned.</p>
+  </footer>
+
+  <script>
+    // Point directly to CSV in the repo root
+    window.DATA_SOURCE = "timeline.csv";
+  </script>
+  <script src="timeline.js"></script>
+</body>
+</html>
