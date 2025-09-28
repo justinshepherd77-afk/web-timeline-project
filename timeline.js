@@ -1,9 +1,5 @@
 (function(){
-  fetchfetch("./timeline.csv")
-  .then(response => response.text())
-  .then(data => {
-    console.log("CSV loaded:", data.slice(0, 200));
-    // existing parsing logic stays the same
-  });
+  fetch(window.DATA_SOURCE).then(r=>r.text()).then(t=>{
+    document.getElementById("timeline").innerHTML = '<pre>'+t+'</pre>';
   });
 })();
