@@ -1,2 +1,6 @@
-Decade,Date,Title,Category,Summary,Links,Conspiracy,Anecdote
-1700-1709,1707,Acts of Union,Politics,"England and Scotland unite as Great Britain","Parliamentary changes; European balance of power","Pamphlets alleged secret payouts to MPs.","Cartoonists drew the new flag with errors"
+year,title,category,description
+1776,American Declaration of Independence,Politics,The thirteen American colonies declare independence from Britain.
+1789,French Revolution Begins,Politics,The French Revolution starts in Paris.
+1879,Edison Invents the Light Bulb,Science,Thomas Edison invents a practical electric light bulb.
+1969,Moon Landing,Science,Apollo 11 lands the first humans on the Moon.
+1989,Fall of the Berlin Wall,Politics,"The Berlin Wall falls, marking the end of the Cold War."
