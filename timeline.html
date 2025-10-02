@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Timeline - Explore History</title>
-    <meta name="description" content="Interactive historical timeline blending library and globe exploration">
+    <title>Timeline - World Timeline</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header class="site-header">
         <div class="header-content">
             <div class="header-left">
-                <h1 class="site-title">World Timeline</h1>
+                <a href="/" class="site-title">World Timeline</a>
             </div>
             <nav class="header-nav">
                 <a href="/library.html">Library</a>
-                <a href="/timeline.html">Timeline</a>
+                <a href="/timeline.html" class="active">Timeline</a>
             </nav>
             <div class="header-right">
                 <button class="chatgpt-button" data-chatgpt-button aria-label="Open ChatGPT helper">
@@ -28,15 +27,44 @@
         </div>
     </header>
 
-    <main class="landing-main">
-        <div class="parallax-bg"></div>
-        <section class="hero">
-            <h2 class="hero-title">Journey Through Time</h2>
-            <p class="hero-subtitle">Explore history through an interactive timeline and curated library of pivotal moments</p>
-            <div class="hero-ctas">
-                <a href="/library.html" class="btn btn-primary">Browse Library</a>
-                <a href="/timeline.html" class="btn btn-secondary">Open Timeline</a>
-                <a href="/teacher.html" class="btn btn-tertiary">Teacher Mode</a>
+    <main class="timeline-main">
+        <section class="timeline-header">
+            <h2>Time Explorer</h2>
+            <div class="filter-chips" id="filter-chips" role="group" aria-label="Category filters">
+            </div>
+            <div class="results-info" aria-live="polite" id="results-info">
+                Loading events...
+            </div>
+        </section>
+
+        <section class="globe-section">
+            <div class="globe-placeholder">
+                <div class="globe-ring"></div>
+            </div>
+        </section>
+
+        <section class="timeline-events" id="timeline-events">
+        </section>
+
+        <section class="timeline-slider-section">
+            <div class="slider-container">
+                <label for="time-slider" class="slider-label">
+                    <span>Year:</span>
+                    <span id="current-year">1775</span>
+                </label>
+                <input
+                    type="range"
+                    id="time-slider"
+                    min="-3000"
+                    max="2025"
+                    value="1775"
+                    step="1"
+                    aria-label="Select year"
+                >
+                <div class="slider-marks">
+                    <span>3000 BCE</span>
+                    <span>Today</span>
+                </div>
             </div>
         </section>
     </main>
@@ -48,6 +76,14 @@
         </nav>
         <p class="footer-credit">World Timeline &copy; 2025</p>
     </footer>
+
+    <div class="modal" id="event-modal" role="dialog" aria-labelledby="event-modal-title" aria-hidden="true">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal-close aria-label="Close modal">&times;</button>
+            <div id="event-details"></div>
+        </div>
+    </div>
 
     <div class="modal" id="chatgpt-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-overlay" data-modal-close></div>
@@ -69,7 +105,9 @@
         </div>
     </div>
 
+    <script src="scripts/data.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/animations.js"></script>
+    <script src="scripts/timeslider.js"></script>
 </body>
 </html>

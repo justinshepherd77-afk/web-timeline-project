@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library - World Timeline</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-content">
+            <div class="header-left">
+                <a href="/" class="site-title">World Timeline</a>
+            </div>
+            <nav class="header-nav">
+                <a href="/library.html" class="active">Library</a>
+                <a href="/timeline.html">Timeline</a>
+            </nav>
+            <div class="header-right">
+                <button class="chatgpt-button" data-chatgpt-button aria-label="Open ChatGPT helper">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                </button>
+                <span class="credit-badge">Made with the help of ChatGPT</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="library-main">
+        <section class="library-header">
+            <h2>The Grand Library</h2>
+            <div class="search-box">
+                <input
+                    type="search"
+                    id="library-search"
+                    placeholder="Search by title or keywords..."
+                    aria-label="Search library"
+                >
+            </div>
+        </section>
+
+        <section class="category-grid" id="category-grid" role="region" aria-label="Category collection">
+        </section>
+
+        <section class="event-list" id="event-list" style="display:none;">
+            <button class="back-button" id="back-to-categories">&larr; Back to Categories</button>
+            <h3 id="category-title"></h3>
+            <div class="events-container" id="events-container"></div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="#about">About</a>
+            <a href="#privacy">Privacy</a>
+        </nav>
+        <p class="footer-credit">World Timeline &copy; 2025</p>
+    </footer>
+
+    <div class="modal" id="event-modal" role="dialog" aria-labelledby="event-modal-title" aria-hidden="true">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal-close aria-label="Close modal">&times;</button>
+            <div id="event-details"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="chatgpt-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-overlay" data-modal-close></div>
+        <div class="modal-content">
+            <button class="modal-close" data-modal-close aria-label="Close modal">&times;</button>
+            <h3 id="modal-title">Quick Feedback</h3>
+            <form class="feedback-form-mini" data-feedback-mini>
+                <label for="mini-name">Name (optional)</label>
+                <input type="text" id="mini-name" name="name">
+
+                <label for="mini-email">Email (optional)</label>
+                <input type="email" id="mini-email" name="email">
+
+                <label for="mini-message">Message <span aria-label="required">*</span></label>
+                <textarea id="mini-message" name="message" required rows="4"></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Feedback</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/animations.js"></script>
+    <script>
+        let allCategories = [];
+        let allEvents = [];
+        let currentCategory = null;
+
+        async function initLibrary() {
+            allCategories = await getCategories();
+            allEvents = await getAllEvents();
+            renderCategories(allCategories);
+
+            document.getElementById('library-search').addEventListener('input', handleSearch);
+            document.getElementById('back-to-categories').addEventListener('click', showCategories);
+        }
+
+        function renderCategories(categories) {
+            const grid = document.getElementById('category-grid');
+            grid.innerHTML = categories.map(cat => {
+                const count = allEvents.filter(e => e.category === cat.slug).length;
+                return `
+                    <div class="category-card" data-category="${cat.slug}" style="--category-color: ${cat.color}" tabindex="0" role="button">
+                        <div class="category-icon">
+                            <img src="${cat.icon}" alt="" loading="lazy">
+                        </div>
+                        <h3 class="category-title">${cat.title}</h3>
+                        <p class="category-count">${count} ${count === 1 ? 'item' : 'items'}</p>
+                    </div>
+                `;
+            }).join('');
+
+            grid.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', () => showCategoryEvents(card.dataset.category));
+                card.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showCategoryEvents(card.dataset.category);
+                    }
+                });
+            });
+        }
+
+        function showCategoryEvents(slug) {
+            currentCategory = allCategories.find(c => c.slug === slug);
+            const events = allEvents.filter(e => e.category === slug);
+
+            document.getElementById('category-grid').style.display = 'none';
+            document.querySelector('.library-header').style.display = 'none';
+            document.getElementById('event-list').style.display = 'block';
+            document.getElementById('category-title').textContent = currentCategory.title;
+
+            const container = document.getElementById('events-container');
+            container.innerHTML = events.map(event => `
+                <div class="event-card" data-event-id="${event.id}" tabindex="0" role="button">
+                    <h4>${event.title}</h4>
+                    <p class="event-year">${event.year}</p>
+                    <p class="event-summary">${event.summary}</p>
+                </div>
+            `).join('');
+
+            container.querySelectorAll('.event-card').forEach(card => {
+                card.addEventListener('click', () => showEventDetails(card.dataset.eventId));
+                card.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        showEventDetails(card.dataset.eventId);
+                    }
+                });
+                fadeInUp(card);
+            });
+        }
+
+        function showCategories() {
+            document.getElementById('event-list').style.display = 'none';
+            document.getElementById('category-grid').style.display = 'grid';
+            document.querySelector('.library-header').style.display = 'block';
+            currentCategory = null;
+        }
+
+        function showEventDetails(eventId) {
+            const event = allEvents.find(e => e.id === eventId);
+            if (!event) return;
+
+            const details = `
+                <h3 id="event-modal-title">${event.title}</h3>
+                <p class="event-date"><strong>Date:</strong> ${event.date || event.year}</p>
+                <p class="event-location"><strong>Location:</strong> ${event.location}</p>
+                <p class="event-summary-full">${event.summary}</p>
+                ${event.links && event.links.length > 0 ? `
+                    <div class="event-links">
+                        <h4>Learn More:</h4>
+                        ${event.links.map(link => `<a href="${link.url}" target="_blank" rel="noopener">${link.label}</a>`).join('')}
+                    </div>
+                ` : ''}
+                <button class="btn btn-secondary" onclick="closeModal('event-modal')">Close</button>
+            `;
+
+            document.getElementById('event-details').innerHTML = details;
+            openModal('event-modal');
+        }
+
+        function handleSearch(e) {
+            const query = e.target.value.toLowerCase().trim();
+
+            if (!query) {
+                renderCategories(allCategories);
+                return;
+            }
+
+            const matchingEvents = allEvents.filter(event =>
+                event.title.toLowerCase().includes(query) ||
+                event.summary.toLowerCase().includes(query) ||
+                (event.tags && event.tags.some(tag => tag.toLowerCase().includes(query)))
+            );
+
+            const categoriesWithMatches = allCategories.filter(cat => {
+                const hasMatch = matchingEvents.some(e => e.category === cat.slug);
+                return hasMatch || cat.title.toLowerCase().includes(query);
+            });
+
+            renderCategories(categoriesWithMatches);
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const eventParam = urlParams.get('event');
+
+        initLibrary().then(() => {
+            if (eventParam) {
+                showEventDetails(eventParam);
+            }
+        });
+    </script>
+</body>
+</html>

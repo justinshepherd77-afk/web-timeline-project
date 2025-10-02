@@ -1,0 +1,40 @@
+{
+  "categories": [
+    {
+      "slug": "art",
+      "title": "Art",
+      "color": "#7A5CFA",
+      "icon": "assets/icons/art.svg"
+    },
+    {
+      "slug": "war",
+      "title": "War",
+      "color": "#E4572E",
+      "icon": "assets/icons/war.svg"
+    },
+    {
+      "slug": "politics",
+      "title": "Politics",
+      "color": "#2E86E4",
+      "icon": "assets/icons/politics.svg"
+    },
+    {
+      "slug": "culture",
+      "title": "Culture",
+      "color": "#E4AC2E",
+      "icon": "assets/icons/culture.svg"
+    },
+    {
+      "slug": "science",
+      "title": "Science",
+      "color": "#20A39E",
+      "icon": "assets/icons/science.svg"
+    },
+    {
+      "slug": "funny",
+      "title": "Funny",
+      "color": "#8D99AE",
+      "icon": "assets/icons/funny.svg"
+    }
+  ]
+}

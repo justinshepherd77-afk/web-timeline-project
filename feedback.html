@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Timeline - Explore History</title>
-    <meta name="description" content="Interactive historical timeline blending library and globe exploration">
+    <title>Feedback - World Timeline</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
     <header class="site-header">
         <div class="header-content">
             <div class="header-left">
-                <h1 class="site-title">World Timeline</h1>
+                <a href="/" class="site-title">World Timeline</a>
             </div>
             <nav class="header-nav">
                 <a href="/library.html">Library</a>
@@ -28,15 +27,30 @@
         </div>
     </header>
 
-    <main class="landing-main">
-        <div class="parallax-bg"></div>
-        <section class="hero">
-            <h2 class="hero-title">Journey Through Time</h2>
-            <p class="hero-subtitle">Explore history through an interactive timeline and curated library of pivotal moments</p>
-            <div class="hero-ctas">
-                <a href="/library.html" class="btn btn-primary">Browse Library</a>
-                <a href="/timeline.html" class="btn btn-secondary">Open Timeline</a>
-                <a href="/teacher.html" class="btn btn-tertiary">Teacher Mode</a>
+    <main class="feedback-main">
+        <section class="feedback-section">
+            <h2>Share Your Feedback</h2>
+            <p>Help us improve World Timeline with your thoughts and suggestions</p>
+
+            <form name="feedback" method="POST" data-netlify="true" class="feedback-form" id="feedback-form">
+                <input type="hidden" name="form-name" value="feedback">
+
+                <label for="name">Name (optional)</label>
+                <input type="text" id="name" name="name">
+
+                <label for="email">Email (optional)</label>
+                <input type="email" id="email" name="email">
+
+                <label for="message">Message <span aria-label="required">*</span></label>
+                <textarea id="message" name="message" required rows="6" placeholder="Share your feedback, suggestions, or report issues..."></textarea>
+
+                <button type="submit" class="btn btn-primary">Send Feedback</button>
+            </form>
+
+            <div class="thank-you" id="thank-you" style="display:none;">
+                <h3>Thank You!</h3>
+                <p>Your feedback has been received. We appreciate you taking the time to help us improve.</p>
+                <a href="/" class="btn btn-secondary">Return Home</a>
             </div>
         </section>
     </main>
@@ -70,6 +84,27 @@
     </div>
 
     <script src="scripts/app.js"></script>
-    <script src="scripts/animations.js"></script>
+    <script>
+        const form = document.getElementById('feedback-form');
+        const thankYou = document.getElementById('thank-you');
+
+        form.addEventListener('submit', (e) => {
+            const formData = new FormData(form);
+            fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(formData).toString()
+            })
+            .then(() => {
+                form.style.display = 'none';
+                thankYou.style.display = 'block';
+            })
+            .catch((error) => {
+                alert('There was an error submitting your feedback. Please try again.');
+                console.error('Feedback submission error:', error);
+            });
+            e.preventDefault();
+        });
+    </script>
 </body>
 </html>

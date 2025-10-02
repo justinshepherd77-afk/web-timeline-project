@@ -1,0 +1,12 @@
+{
+  "name": "world-timeline",
+  "version": "1.0.0",
+  "description": "Interactive historical timeline with library interface",
+  "scripts": {
+    "build": "echo 'Static site - no build step required'",
+    "dev": "echo 'Use a local server to test'"
+  },
+  "keywords": ["timeline", "history", "education"],
+  "author": "",
+  "license": "MIT"
+}
