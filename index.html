@@ -1,75 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Timeline - Explore History</title>
-    <meta name="description" content="Interactive historical timeline blending library and globe exploration">
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Timeline</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-content">
-            <div class="header-left">
-                <h1 class="site-title">World Timeline</h1>
-            </div>
-            <nav class="header-nav">
-                <a href="/library.html">Library</a>
-                <a href="/timeline.html">Timeline</a>
-            </nav>
-            <div class="header-right">
-                <button class="chatgpt-button" data-chatgpt-button aria-label="Open ChatGPT helper">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </button>
-                <span class="credit-badge">Made with the help of ChatGPT</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="landing-main">
-        <div class="parallax-bg"></div>
-        <section class="hero">
-            <h2 class="hero-title">Journey Through Time</h2>
-            <p class="hero-subtitle">Explore history through an interactive timeline and curated library of pivotal moments</p>
-            <div class="hero-ctas">
-                <a href="/library.html" class="btn btn-primary">Browse Library</a>
-                <a href="/timeline.html" class="btn btn-secondary">Open Timeline</a>
-                <a href="/teacher.html" class="btn btn-tertiary">Teacher Mode</a>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <nav class="footer-nav">
-            <a href="#about">About</a>
-            <a href="#privacy">Privacy</a>
-        </nav>
-        <p class="footer-credit">World Timeline &copy; 2025</p>
-    </footer>
-
-    <div class="modal" id="chatgpt-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-        <div class="modal-overlay" data-modal-close></div>
-        <div class="modal-content">
-            <button class="modal-close" data-modal-close aria-label="Close modal">&times;</button>
-            <h3 id="modal-title">Quick Feedback</h3>
-            <form class="feedback-form-mini" data-feedback-mini>
-                <label for="mini-name">Name (optional)</label>
-                <input type="text" id="mini-name" name="name">
-
-                <label for="mini-email">Email (optional)</label>
-                <input type="email" id="mini-email" name="email">
-
-                <label for="mini-message">Message <span aria-label="required">*</span></label>
-                <textarea id="mini-message" name="message" required rows="4"></textarea>
-
-                <button type="submit" class="btn btn-primary">Send Feedback</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="scripts/app.js"></script>
-    <script src="scripts/animations.js"></script>
+  <h1>World Timeline</h1>
+  <nav>
+    <a href="timeline.html">Open Timeline</a> |
+    <a href="teacher.html">Teacher Mode</a>
+  </nav>
+  <p>Made with the help of ChatGPT</p>
 </body>
 </html>

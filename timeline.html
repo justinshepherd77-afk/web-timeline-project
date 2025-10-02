@@ -1,113 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timeline - World Timeline</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timeline - World Timeline</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-content">
-            <div class="header-left">
-                <a href="/" class="site-title">World Timeline</a>
-            </div>
-            <nav class="header-nav">
-                <a href="/library.html">Library</a>
-                <a href="/timeline.html" class="active">Timeline</a>
-            </nav>
-            <div class="header-right">
-                <button class="chatgpt-button" data-chatgpt-button aria-label="Open ChatGPT helper">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                    </svg>
-                </button>
-                <span class="credit-badge">Made with the help of ChatGPT</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="timeline-main">
-        <section class="timeline-header">
-            <h2>Time Explorer</h2>
-            <div class="filter-chips" id="filter-chips" role="group" aria-label="Category filters">
-            </div>
-            <div class="results-info" aria-live="polite" id="results-info">
-                Loading events...
-            </div>
-        </section>
-
-        <section class="globe-section">
-            <div class="globe-placeholder">
-                <div class="globe-ring"></div>
-            </div>
-        </section>
-
-        <section class="timeline-events" id="timeline-events">
-        </section>
-
-        <section class="timeline-slider-section">
-            <div class="slider-container">
-                <label for="time-slider" class="slider-label">
-                    <span>Year:</span>
-                    <span id="current-year">1775</span>
-                </label>
-                <input
-                    type="range"
-                    id="time-slider"
-                    min="-3000"
-                    max="2025"
-                    value="1775"
-                    step="1"
-                    aria-label="Select year"
-                >
-                <div class="slider-marks">
-                    <span>3000 BCE</span>
-                    <span>Today</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <nav class="footer-nav">
-            <a href="#about">About</a>
-            <a href="#privacy">Privacy</a>
-        </nav>
-        <p class="footer-credit">World Timeline &copy; 2025</p>
-    </footer>
-
-    <div class="modal" id="event-modal" role="dialog" aria-labelledby="event-modal-title" aria-hidden="true">
-        <div class="modal-overlay" data-modal-close></div>
-        <div class="modal-content">
-            <button class="modal-close" data-modal-close aria-label="Close modal">&times;</button>
-            <div id="event-details"></div>
-        </div>
-    </div>
-
-    <div class="modal" id="chatgpt-modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-        <div class="modal-overlay" data-modal-close></div>
-        <div class="modal-content">
-            <button class="modal-close" data-modal-close aria-label="Close modal">&times;</button>
-            <h3 id="modal-title">Quick Feedback</h3>
-            <form class="feedback-form-mini" data-feedback-mini>
-                <label for="mini-name">Name (optional)</label>
-                <input type="text" id="mini-name" name="name">
-
-                <label for="mini-email">Email (optional)</label>
-                <input type="email" id="mini-email" name="email">
-
-                <label for="mini-message">Message <span aria-label="required">*</span></label>
-                <textarea id="mini-message" name="message" required rows="4"></textarea>
-
-                <button type="submit" class="btn btn-primary">Send Feedback</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="scripts/data.js"></script>
-    <script src="scripts/app.js"></script>
-    <script src="scripts/animations.js"></script>
-    <script src="scripts/timeslider.js"></script>
+  <h1>Timeline Explorer</h1>
+  <input type="range" id="yearSlider" min="-3000" max="2025" step="1" value="1776">
+  <p>Year: <span id="yearLabel">1776</span></p>
+  <div id="events"></div>
+  <script src="timeline.js"></script>
 </body>
 </html>

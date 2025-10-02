@@ -1,1 +1,4 @@
-body{font-family:sans-serif;background:#0b0c10;color:#fff;margin:0;padding:0;}
+body { font-family: Arial, sans-serif; margin: 20px; }
+h1 { color: #2a4d9b; }
+nav a { margin-right: 10px; }
+#events { margin-top: 20px; }
