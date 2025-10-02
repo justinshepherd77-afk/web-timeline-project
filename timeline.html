@@ -8,9 +8,17 @@
 </head>
 <body>
   <h1>Timeline Explorer</h1>
-  <input type="range" id="yearSlider" min="-3000" max="2025" step="5" value="1775">
-  <p>Year: <span id="yearLabel">1775</span></p>
+
+  <div id="tickerContainer">
+    <span id="yearLabel">1775</span>
+  </div>
+
   <div id="events"></div>
+
+  <div id="sliderContainer">
+    <input type="range" id="yearSlider" min="-3000" max="2025" step="5" value="1775">
+  </div>
+
   <script src="timeline.js"></script>
 </body>
 </html>

@@ -3,11 +3,36 @@ h1 { color: #2a4d9b; }
 nav a { margin-right: 10px; }
 #events { margin-top: 20px; }
 
+/* Center ticker */
+#tickerContainer {
+  text-align: center;
+  margin: 40px 0 20px 0;
+}
+
+#yearLabel {
+  font-size: 48px;
+  font-weight: bold;
+  color: #2a4d9b;
+  transition: transform 0.2s ease, font-size 0.2s ease;
+}
+
+/* Expanded ticker while sliding */
+#yearLabel.active {
+  font-size: 80px;
+  color: #1a2f6b;
+  transform: scale(1.2);
+}
+
+/* Slider at bottom */
+#sliderContainer {
+  text-align: center;
+  margin-top: 50px;
+}
+
 #yearSlider {
   width: 95%;
   max-width: 1200px;
   height: 12px;
-  margin: 20px 0;
 }
 
 #yearSlider::-webkit-slider-thumb {

@@ -19,7 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   slider.addEventListener("input", () => {
     label.textContent = slider.value;
+    label.classList.add("active"); // enlarge ticker while sliding
     loadEvents(parseInt(slider.value));
+
+    clearTimeout(slider._timeout);
+    slider._timeout = setTimeout(() => {
+      label.classList.remove("active"); // shrink back after stop
+    }, 500);
   });
 
   loadEvents(parseInt(slider.value));
