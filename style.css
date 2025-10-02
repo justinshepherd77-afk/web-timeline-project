@@ -2,3 +2,23 @@ body { font-family: Arial, sans-serif; margin: 20px; }
 h1 { color: #2a4d9b; }
 nav a { margin-right: 10px; }
 #events { margin-top: 20px; }
+
+#yearSlider {
+  width: 95%;
+  max-width: 1200px;
+  height: 12px;
+  margin: 20px 0;
+}
+
+#yearSlider::-webkit-slider-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #2a4d9b;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#yearSlider::-webkit-slider-thumb:hover {
+  background: #1a2f6b;
+}

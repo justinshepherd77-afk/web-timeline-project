@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetch("timeline.csv")
       .then(response => response.text())
       .then(text => {
-        const rows = text.trim().split("\n").slice(1); // skip header
+        const rows = text.trim().split("\n").slice(1);
         const events = rows.map(row => {
           const [y, title, category, description] = row.split(",");
           return { year: parseInt(y), title, category, description };
