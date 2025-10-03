@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>World Timeline</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>World Timeline Prototype v1</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
-  <h1>World Timeline</h1>
-  <nav>
-    <a href="timeline.html">Open Timeline</a> |
-    <a href="teacher.html">Teacher Mode</a>
-  </nav>
-  <p>Made with the help of ChatGPT</p>
+  <div id="app-bg"><div class="grid-lines"></div><div class="wireframe-wall"></div><div class="wireframe-desk"></div></div>
+  <header id="topBar"><div class="era-label"><span id="eraLabel">Modern Era</span></div><div class="ticker"><span id="yearTicker">1775</span></div></header>
+  <main id="stage">
+    <section id="mapStage"><div id="map"></div><div id="sliderWrap"><div id="sliderLabels"><span>Ancient & Early</span><span>|</span><span>Modern Era</span></div><input type="range" id="weightedSlider" min="0" max="1000" value="750" step="1" /></div></section>
+    <section id="deskStage"><div id="deskItems"></div><aside id="shelf"><h3>Bookshelf</h3><ul id="shelfList"></ul><h3>Scroll Rack</h3><ul id="scrollRack"></ul></aside></section>
+  </main>
+  <div id="yearBookModal" class="modal hidden"><div class="modal-content"><h2>Select a Year</h2><p class="modal-hint">Choose one of the five year-books for this region.</p><div id="yearBookGrid"></div><button id="closeYearBook" class="ghost">Cancel</button></div></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="data/sample_events.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -1,56 +1,6 @@
-body { font-family: Arial, sans-serif; margin: 20px; }
-h1 { color: #2a4d9b; }
-nav a { margin-right: 10px; }
-#events { margin-top: 20px; }
-
-/* Center ticker */
-#tickerContainer {
-  text-align: center;
-  margin: 40px 0 20px 0;
-}
-
-#yearLabel {
-  font-size: 48px;
-  font-weight: bold;
-  color: #2a4d9b;
-  transition: transform 0.2s ease, font-size 0.2s ease;
-}
-
-/* Expanded ticker while sliding */
-#yearLabel.active {
-  font-size: 80px;
-  color: #1a2f6b;
-  transform: scale(1.2);
-}
-
-/* Slider anchored at bottom */
-#sliderContainer {
-  position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  text-align: center;
-  background: white;
-  padding: 10px 0;
-  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
-}
-
-#yearSlider {
-  width: 95%;
-  max-width: 1200px;
-  height: 12px;
-}
-
-#yearSlider::-webkit-slider-thumb {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: #2a4d9b;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-#yearSlider::-webkit-slider-thumb:hover {
-  background: #1a2f6b;
-}
+body{margin:0;font-family:sans-serif;background:#10131a;color:#eee;overflow:hidden}
+#app-bg{position:fixed;inset:0;background:radial-gradient(1000px 700px at 50% 10%,#1b2131 0%,#0f1219 70%)}
+.wireframe-wall{position:absolute;top:0;left:0;right:0;height:55%;border-bottom:1px solid rgba(255,255,255,.1)}
+.wireframe-desk{position:absolute;bottom:0;left:0;right:0;height:45%;border-top:1px solid rgba(255,255,255,.12)}
+#map{height:100%;} .scroll,.book{background:#fff;color:#000;padding:10px;margin:10px}
+.modal{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.5)}.modal.hidden{display:none}
