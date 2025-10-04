@@ -1,22 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>World Timeline Prototype v1</title>
-  <link rel="stylesheet" href="style.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<html lang="en"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>World Timeline — Slim Map v1</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div id="app-bg"><div class="grid-lines"></div><div class="wireframe-wall"></div><div class="wireframe-desk"></div></div>
-  <header id="topBar"><div class="era-label"><span id="eraLabel">Modern Era</span></div><div class="ticker"><span id="yearTicker">1775</span></div></header>
-  <main id="stage">
-    <section id="mapStage"><div id="map"></div><div id="sliderWrap"><div id="sliderLabels"><span>Ancient & Early</span><span>|</span><span>Modern Era</span></div><input type="range" id="weightedSlider" min="0" max="1000" value="750" step="1" /></div></section>
-    <section id="deskStage"><div id="deskItems"></div><aside id="shelf"><h3>Bookshelf</h3><ul id="shelfList"></ul><h3>Scroll Rack</h3><ul id="scrollRack"></ul></aside></section>
-  </main>
-  <div id="yearBookModal" class="modal hidden"><div class="modal-content"><h2>Select a Year</h2><p class="modal-hint">Choose one of the five year-books for this region.</p><div id="yearBookGrid"></div><button id="closeYearBook" class="ghost">Cancel</button></div></div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script src="data/sample_events.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>
+<header class="topbar">
+  <div class="brand">World Timeline · Slim Map</div>
+  <div class="controls">
+    <label>Year: <span id="yearLabel">1500</span></label>
+    <input type="range" id="yearSlider" min="-3000" max="2025" step="5" value="1500">
+  </div>
+</header>
+<main>
+  <aside class="sidebar">
+    <h3>Countries</h3>
+    <div id="countryList" class="country-list"></div>
+    <hr/>
+    <div id="summaryPanel" class="panel hidden">
+      <h3>Summary</h3>
+      <div id="summaryBody"></div>
+      <button id="toCategories" class="btn">Continue to Categories</button>
+    </div>
+    <div id="categoriesPanel" class="panel hidden">
+      <h3>Categories</h3>
+      <div id="categoryButtons"></div>
+    </div>
+  </aside>
+  <section id="map"></section>
+  <section class="results">
+    <h3>Data</h3>
+    <div id="resultsList" class="results-list"></div>
+  </section>
+</main>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+<script src="app.js"></script>
+</body></html>

@@ -1,6 +1,18 @@
-body{margin:0;font-family:sans-serif;background:#10131a;color:#eee;overflow:hidden}
-#app-bg{position:fixed;inset:0;background:radial-gradient(1000px 700px at 50% 10%,#1b2131 0%,#0f1219 70%)}
-.wireframe-wall{position:absolute;top:0;left:0;right:0;height:55%;border-bottom:1px solid rgba(255,255,255,.1)}
-.wireframe-desk{position:absolute;bottom:0;left:0;right:0;height:45%;border-top:1px solid rgba(255,255,255,.12)}
-#map{height:100%;} .scroll,.book{background:#fff;color:#000;padding:10px;margin:10px}
-.modal{position:fixed;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.5)}.modal.hidden{display:none}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:#0f1218;color:#e8ecff}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;background:#141a25;border-bottom:1px solid rgba(255,255,255,.1);position:sticky;top:0;z-index:10}
+.brand{font-weight:800;letter-spacing:.3px}
+.controls{display:flex;gap:10px;align-items:center}
+main{display:grid;grid-template-columns:260px 1fr 360px;gap:8px;height:calc(100vh - 52px)}
+.sidebar{padding:10px;background:#121826;border-right:1px solid rgba(255,255,255,.08);overflow:auto}
+#map{height:100%;width:100%}
+.results{padding:10px;background:#121826;border-left:1px solid rgba(255,255,255,.08);overflow:auto}
+.country-list{display:grid;gap:6px;max-height:40vh;overflow:auto}
+.country-btn{padding:6px 8px;border:1px solid rgba(255,255,255,.15);border-radius:8px;background:#1a2235;color:#e8ecff;cursor:pointer}
+.country-btn:hover{background:#232d47}
+.panel{margin-top:10px;padding:8px;border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#161d2b}
+.hidden{display:none}
+.btn{cursor:pointer;padding:6px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:#2846a3;color:#fff}
+.btn:hover{filter:brightness(1.05)}
+.category-chip{display:inline-flex;align-items:center;gap:6px;padding:5px 8px;margin:4px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:#1b2440;font-size:12px;cursor:pointer}
+.result-card{border:1px solid rgba(255,255,255,.12);border-radius:8px;background:#101827;padding:8px;margin:8px 0}
+.result-card h4{margin:0 0 4px 0}
